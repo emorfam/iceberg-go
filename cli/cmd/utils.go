@@ -10,15 +10,14 @@ import (
 	"strings"
 
 	"github.com/apache/iceberg-go/catalog"
-	"github.com/apache/iceberg-go/cli/output"
 	"github.com/apache/iceberg-go/table"
 	awsconfig "github.com/aws/aws-sdk-go-v2/config"
 )
 
-func parseOutput() output.Output {
+func parseOutput() Output {
 	switch strings.ToLower(cfg.Output) {
 	case "text":
-		return output.Text{}
+		return Text{}
 	case "json":
 		fallthrough
 	default:
@@ -61,7 +60,7 @@ func parseCatalog() catalog.Catalog {
 	return cat
 }
 
-func loadTable(out output.Output, cat catalog.Catalog, id string) *table.Table {
+func loadTable(out Output, cat catalog.Catalog, id string) *table.Table {
 	tbl, err := cat.LoadTable(context.Background(), catalog.ToRestIdentifier(id), nil)
 	if err != nil {
 		out.Error(err)

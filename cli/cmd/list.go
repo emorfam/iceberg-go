@@ -9,7 +9,6 @@ import (
 	"os"
 
 	"github.com/apache/iceberg-go/catalog"
-	"github.com/apache/iceberg-go/cli/output"
 	"github.com/spf13/cobra"
 )
 
@@ -37,7 +36,7 @@ func init() {
 	rootCmd.AddCommand(listCmd)
 }
 
-func list(out output.Output, cat catalog.Catalog, parent string) {
+func list(out Output, cat catalog.Catalog, parent string) {
 	prnt := catalog.ToRestIdentifier(parent)
 
 	ids, err := cat.ListNamespaces(context.Background(), prnt)
