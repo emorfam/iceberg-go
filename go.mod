@@ -29,10 +29,10 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/glue v1.101.2
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.66.3
 	github.com/aws/smithy-go v1.22.0
-	github.com/docopt/docopt-go v0.0.0-20180111231733-ee0de3bc6815
 	github.com/google/uuid v1.6.0
 	github.com/hamba/avro/v2 v2.27.0
 	github.com/pterm/pterm v0.12.79
+	github.com/spf13/cobra v1.8.1
 	github.com/stretchr/testify v1.9.0
 	github.com/substrait-io/substrait-go v1.2.0
 	github.com/twmb/murmur3 v1.1.8
@@ -71,6 +71,7 @@ require (
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/google/flatbuffers v24.3.25+incompatible // indirect
 	github.com/gookit/color v1.5.4 // indirect
+	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/asmfmt v1.3.2 // indirect
 	github.com/klauspost/compress v1.17.11 // indirect
@@ -87,6 +88,7 @@ require (
 	github.com/pierrec/lz4/v4 v4.1.21 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
+	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/stretchr/objx v0.5.2 // indirect
 	github.com/substrait-io/substrait v0.57.1 // indirect
 	github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e // indirect

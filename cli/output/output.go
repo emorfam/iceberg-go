@@ -15,7 +15,7 @@
 // specific language governing permissions and limitations
 // under the License.
 
-package main
+package output
 
 import (
 	"fmt"
@@ -44,9 +44,9 @@ type Output interface {
 	Error(error)
 }
 
-type text struct{}
+type Text struct{}
 
-func (text) Identifiers(idlist []table.Identifier) {
+func (Text) Identifiers(idlist []table.Identifier) {
 	data := pterm.TableData{[]string{"IDs"}}
 	for _, ids := range idlist {
 		data = append(data, []string{strings.Join(ids, ".")})
@@ -59,7 +59,7 @@ func (text) Identifiers(idlist []table.Identifier) {
 		WithData(data).Render()
 }
 
-func (t text) DescribeTable(tbl *table.Table) {
+func (t Text) DescribeTable(tbl *table.Table) {
 	propData := pterm.TableData{{"key", "value"}}
 	for k, v := range tbl.Metadata().Properties() {
 		propData = append(propData, []string{k, v})
@@ -109,7 +109,7 @@ func (t text) DescribeTable(tbl *table.Table) {
 	propTable.Render()
 }
 
-func (t text) Files(tbl *table.Table, history bool) {
+func (t Text) Files(tbl *table.Table, history bool) {
 	var snapshots []table.Snapshot
 	if history {
 		snapshots = tbl.Metadata().Snapshots()
@@ -161,7 +161,7 @@ func (t text) Files(tbl *table.Table, history bool) {
 	pterm.DefaultTree.WithRoot(node).Render()
 }
 
-func (text) DescribeProperties(props iceberg.Properties) {
+func (Text) DescribeProperties(props iceberg.Properties) {
 	data := pterm.TableData{[]string{"Key", "Value"}}
 	for k, v := range props {
 		data = append(data, []string{k, v})
@@ -174,11 +174,11 @@ func (text) DescribeProperties(props iceberg.Properties) {
 		WithData(data).Render()
 }
 
-func (text) Text(val string) {
+func (Text) Text(val string) {
 	fmt.Println(val)
 }
 
-func (text) Schema(schema *iceberg.Schema) {
+func (Text) Schema(schema *iceberg.Schema) {
 	schemaTree := pterm.LeveledList{}
 	var addChildren func(iceberg.NestedField, int)
 	addChildren = func(nf iceberg.NestedField, depth int) {
@@ -203,11 +203,11 @@ func (text) Schema(schema *iceberg.Schema) {
 	pterm.DefaultTree.WithRoot(schemaTreeNode).Render()
 }
 
-func (text) Spec(spec iceberg.PartitionSpec) {
+func (Text) Spec(spec iceberg.PartitionSpec) {
 	fmt.Println(spec)
 }
 
-func (text) Uuid(u uuid.UUID) {
+func (Text) Uuid(u uuid.UUID) {
 	if u.String() != "" {
 		fmt.Println(u.String())
 	} else {
@@ -215,6 +215,6 @@ func (text) Uuid(u uuid.UUID) {
 	}
 }
 
-func (text) Error(err error) {
+func (Text) Error(err error) {
 	log.Fatal(err)
 }

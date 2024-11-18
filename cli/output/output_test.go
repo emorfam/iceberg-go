@@ -15,7 +15,7 @@
 // specific language governing permissions and limitations
 // under the License.
 
-package main
+package output
 
 import (
 	"bytes"
@@ -188,7 +188,7 @@ func TestDescribeTable(t *testing.T) {
 		table := table.New([]string{"t"}, meta, "", nil)
 		buf.Reset()
 
-		text{}.DescribeTable(table)
+		Text{}.DescribeTable(table)
 
 		assert.Equal(t, tt.expected, buf.String())
 	}
